@@ -20,28 +20,27 @@ int main(int argc, char** argv)
         {
             break;
         }
-        std::string move;
+        std::string move, hint;
         std::cin >> move;
-        FEITENG::Pos direction;
         switch(move[0])
         {
             case 'u':
-                direction = { 0, 1 };
+                hint = game.move(FEITENG::Player::Heading::UP);
                 break;
             case 'd':
-                direction = { 0, -1 };
+                hint = game.move(FEITENG::Player::Heading::DOWN);
                 break;
             case 'l':
-                direction = { -1, 0 };
+                hint = game.move(FEITENG::Player::Heading::LEFT);
                 break;
             case 'r':
-                direction = { 1, 0 };
+                hint = game.move(FEITENG::Player::Heading::RIGHT);
                 break;
             default:
+                std::cout << "Invalid Move!" << std::endl;
                 break;
         }
-        game.move(direction);
-        std::cout << game.getHint() << '\n' << std::endl;
+        std::cout << hint << '\n' << std::endl;
     }
 
     std::system("pause");

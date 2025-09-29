@@ -18,7 +18,7 @@ namespace FEITENG
         virtual ~Empty() = default;
 
         virtual std::string getName() const override;
-        virtual bool scheduleMove(Pos&) override;
+        virtual void scheduleMove(Player::Heading&, Pos&) override;
         virtual std::string getDescription() const override;
 
     protected:

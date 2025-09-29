@@ -4,9 +4,6 @@
 
 namespace FEITENG
 {
-    Game::Game(): pos(Pos{ 1, 1 })
-    { }
-
     std::string Game::getBoardInfo() const
     {
         std::ostringstream oss;
@@ -17,21 +14,34 @@ namespace FEITENG
         return oss.str();
     }
 
-    void Game::move(const Pos& direction)
+    std::string Game::move(Player::Heading heading)
     {
-        hint.clear();
-
-        Pos displacement = direction;
-        bool need_transition = true;
-        while(need_transition)
+        Pos displacement{ 0, 0 };
+        player.heading = heading;
+        switch(heading)
         {
-            need_transition = board.step(pos, displacement, hint);
+            case Player::Heading::UP:
+                displacement = { 0, 1 };
+                break;
+            case Player::Heading::DOWN:
+                displacement = { 0, -1 };
+                break;
+            case Player::Heading::LEFT:
+                displacement = { -1, 0 };
+                break;
+            case Player::Heading::RIGHT:
+                displacement = { 1, 0 };
+                break;
+            default:
+                break;
         }
-        pos += displacement;
-    }
 
-    std::string Game::getHint() const
-    {
+        std::string hint;
+        while(player.heading != Player::Heading::NONE)
+        {
+            board.step(player, displacement, hint);
+        }
+        player.pos += displacement;
         return hint;
     }
 } // namespace FEITENG

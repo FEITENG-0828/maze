@@ -2,6 +2,7 @@
 
 #include <string>
 
+#include "Player.h"
 #include "Pos.h"
 
 namespace FEITENG
@@ -25,7 +26,7 @@ namespace FEITENG
         virtual ~Block() = default;
 
         virtual std::string getName() const = 0;
-        virtual bool scheduleMove(Pos&) = 0;
+        virtual void scheduleMove(Player::Heading&, Pos&) = 0;
         virtual std::string getDescription() const = 0;
 
     protected:

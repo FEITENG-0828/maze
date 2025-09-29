@@ -1,14 +1,19 @@
 #include "Board.h"
+
 #include "Border.h"
-#include "End.h"
 #include "Start.h"
+#include "End.h"
+#include "Empty.h"
+#include "Mirror.h"
+#include "Wall.h"
+#include "Player.h"
 
 namespace FEITENG
 {
     Board::Board(): // FIXME: hard-coded
-        width(6 + 2),
-        height(6 + 2),
-        name(u8"永夜回廊")
+        width(4 + 2),
+        height(4 + 2),
+        name(u8"测试")
     {
         grid.resize(height);
         for(auto& row: grid)
@@ -27,6 +32,18 @@ namespace FEITENG
                 else if(i == 1 && j == 1)
                 {
                     grid[i][j] = std::make_unique<Start>();
+                }
+                else if(i == 1 && j == 2)
+                {
+                    grid[i][j] = std::make_unique<Mirror>(Mirror::MirrorType::LEFT);
+                }
+                else if(i == 4 && j == 2)
+                {
+                    grid[i][j] = std::make_unique<Mirror>(Mirror::MirrorType::RIGHT);
+                }
+                else if((i == 1 && j == 3) || (i == 4 && j == 3))
+                {
+                    grid[i][j] = std::make_unique<Wall>();
                 }
                 else if(i == height - 2 && j == width - 2)
                 {
@@ -55,10 +72,10 @@ namespace FEITENG
         return name;
     }
 
-    bool Board::step(const Pos& pos, Pos& displacement, std::string& hint)
+    void Board::step(Player& player, Pos& displacement, std::string& hint)
     {
-        auto& block = grid[(pos + displacement).x][(pos + displacement).y];
+        auto& block = grid[(player.pos + displacement).x][(player.pos + displacement).y];
+        block->scheduleMove(player.heading, displacement);
         hint += block->getDescription() + ' ';
-        return block->scheduleMove(displacement);
     }
 } // namespace FEITENG

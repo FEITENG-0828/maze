@@ -1,22 +1,22 @@
 #pragma once
 
 #include "Board.h"
+#include "Player.h"
 
 namespace FEITENG
 {
     class Game
     {
     public:
-        Game();
+        Game() = default;
         ~Game() = default;
 
         std::string getBoardInfo() const;
-        void move(const Pos&);
+        std::string move(Player::Heading);
         std::string getHint() const;
 
     private:
         Board board;
-        Pos pos;
-        std::string hint;
+        Player player;
     };
 } // namespace FEITENG

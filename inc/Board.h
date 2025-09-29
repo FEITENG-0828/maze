@@ -19,7 +19,7 @@ namespace FEITENG
         int getHeight() const;
         std::string getName() const;
 
-        bool step(const Pos&, Pos&, std::string&);
+        void step(Player&, Pos&, std::string&);
 
     private:
         int width;

@@ -13,9 +13,9 @@ namespace FEITENG
         return "Empty";
     }
 
-    bool Empty::scheduleMove(Pos& displacement)
+    void Empty::scheduleMove(Player::Heading& heading, Pos& displacement)
     {
-        return false;
+        heading = Player::Heading::NONE;
     }
 
     std::string Empty::getDescription() const

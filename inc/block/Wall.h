@@ -4,11 +4,11 @@
 
 namespace FEITENG
 {
-    class Border : public Block
+    class Wall : public Block
     {
     public:
-        Border();
-        virtual ~Border() = default;
+        Wall();
+        virtual ~Wall() = default;
 
         virtual std::string getName() const override;
         virtual void scheduleMove(Player::Heading&, Pos&) override;
