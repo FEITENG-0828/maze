@@ -9,12 +9,11 @@ namespace FEITENG
     class Border : public Block
     {
     public:
-        Border() = default;
+        Border();
         virtual ~Border() = default;
 
-        virtual std::string getDescription() const override
-        {
-            return "Border";
-        }
+        virtual std::string getName() const override;
+        virtual bool scheduleMove(Pos&) override;
+        virtual std::string getDescription() const override;
     };
 } // namespace FEITENG
