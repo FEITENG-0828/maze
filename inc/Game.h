@@ -8,12 +8,11 @@ namespace FEITENG
     class Game
     {
     public:
-        Game() = default;
+        Game(const std::string&);
         ~Game() = default;
 
         std::string getBoardInfo() const;
         std::string move(Player::Heading);
-        std::string getHint() const;
 
     private:
         Board board;

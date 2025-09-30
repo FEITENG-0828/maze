@@ -9,7 +9,7 @@ int main(int argc, char** argv)
 
     std::cout << "Hello, Maze!\n" << std::endl;
 
-    FEITENG::Game game;
+    FEITENG::Game game("map_gen/test.maze");
     std::cout << game.getBoardInfo() << std::endl;
 
     std::cout << "<<<<<<<<<<<<<<<<<<<<" << std::endl;

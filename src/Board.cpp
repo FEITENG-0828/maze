@@ -10,52 +10,13 @@
 
 namespace FEITENG
 {
-    Board::Board(): // FIXME: hard-coded
-        width(4 + 2),
-        height(4 + 2),
-        name(u8"测试")
-    {
-        grid.resize(height);
-        for(auto& row: grid)
-        {
-            row.resize(width);
-        }
-
-        for(int i = 0; i < height; ++i)
-        {
-            for(int j = 0; j < width; ++j)
-            {
-                if(i == 0 || i == height - 1 || j == 0 || j == width - 1)
-                {
-                    grid[i][j] = std::make_unique<Border>();
-                }
-                else if(i == 1 && j == 1)
-                {
-                    grid[i][j] = std::make_unique<Start>();
-                }
-                else if(i == 1 && j == 2)
-                {
-                    grid[i][j] = std::make_unique<Mirror>(Mirror::MirrorType::LEFT);
-                }
-                else if(i == 4 && j == 2)
-                {
-                    grid[i][j] = std::make_unique<Mirror>(Mirror::MirrorType::RIGHT);
-                }
-                else if((i == 1 && j == 3) || (i == 4 && j == 3))
-                {
-                    grid[i][j] = std::make_unique<Wall>();
-                }
-                else if(i == height - 2 && j == width - 2)
-                {
-                    grid[i][j] = std::make_unique<End>();
-                }
-                else
-                {
-                    grid[i][j] = std::make_unique<Empty>();
-                }
-            }
-        }
-    }
+    Board::Board(int w, int h, std::string&& n, std::string&& s, Grid&& g):
+        width(w + 2),
+        height(h + 2),
+        name(std::move(n)),
+        statistics(std::move(s)),
+        grid(std::move(g))
+    { }
 
     int Board::getWidth() const
     {
@@ -70,6 +31,11 @@ namespace FEITENG
     std::string Board::getName() const
     {
         return name;
+    }
+
+    std::string Board::getStatistics() const
+    {
+        return statistics;
     }
 
     void Board::step(Player& player, Pos& displacement, std::string& hint)

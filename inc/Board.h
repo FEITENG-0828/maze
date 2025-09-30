@@ -12,12 +12,16 @@ namespace FEITENG
     class Board
     {
     public:
-        Board();
+        Board(int, int, std::string&&, std::string&&, Grid&&);
+        Board(const Board&) = delete;
+        Board(Board&&) = default;
         ~Board() = default;
+        Board& operator=(const Board&) = delete;
 
         int getWidth() const;
         int getHeight() const;
         std::string getName() const;
+        std::string getStatistics() const;
 
         void step(Player&, Pos&, std::string&);
 
@@ -25,6 +29,7 @@ namespace FEITENG
         int width;
         int height;
         std::string name;
+        std::string statistics;
 
         Grid grid;
     };

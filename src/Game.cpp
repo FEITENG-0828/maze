@@ -1,16 +1,20 @@
+#include "Game.h"
+
 #include <sstream>
 
-#include "Game.h"
+#include "MapParser.h"
 
 namespace FEITENG
 {
+    Game::Game(const std::string& map_file): board(MapParser::parseFromFile(map_file))
+    { }
+
     std::string Game::getBoardInfo() const
     {
         std::ostringstream oss;
         oss << "Board Name: " << board.getName() << '\n';
         oss << "Dimensions: " << board.getWidth() - 2 << " * " << board.getHeight() - 2 << '\n';
-        oss << "Statistics:\n"; // TODO: count different types of blocks
-
+        oss << board.getStatistics();
         return oss.str();
     }
 
@@ -21,16 +25,16 @@ namespace FEITENG
         switch(heading)
         {
             case Player::Heading::UP:
-                displacement = { 0, 1 };
+                displacement = { 1, 0 };
                 break;
             case Player::Heading::DOWN:
-                displacement = { 0, -1 };
-                break;
-            case Player::Heading::LEFT:
                 displacement = { -1, 0 };
                 break;
+            case Player::Heading::LEFT:
+                displacement = { 0, -1 };
+                break;
             case Player::Heading::RIGHT:
-                displacement = { 1, 0 };
+                displacement = { 0, 1 };
                 break;
             default:
                 break;
