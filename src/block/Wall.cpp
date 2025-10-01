@@ -19,14 +19,10 @@ namespace FEITENG
         return "Wall";
     }
 
-    void Wall::scheduleMove(Player::Heading& heading, Pos& displacement)
+    std::string Wall::scheduleMove(Player::Heading& heading, Pos& displacement)
     {
         heading = Player::Heading::NONE;
         displacement.toZero();
-    }
-
-    std::string Wall::getDescription() const
-    {
         return "Wall";
     }
 

@@ -33,7 +33,10 @@ namespace FEITENG
     void Board::step(Player& player, Pos& displacement, std::string& hint)
     {
         auto& block = grid[(player.pos + displacement).x][(player.pos + displacement).y];
-        block->scheduleMove(player.heading, displacement);
-        hint += block->getDescription() + ' ';
+        std::string new_hint = block->scheduleMove(player.heading, displacement);
+        if(!new_hint.empty())
+        {
+            hint += new_hint + ' ';
+        }
     }
 } // namespace FEITENG

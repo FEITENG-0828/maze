@@ -19,7 +19,7 @@ namespace FEITENG
         return "Mirror";
     }
 
-    void Mirror::scheduleMove(Player::Heading& heading, Pos& displacement)
+    std::string Mirror::scheduleMove(Player::Heading& heading, Pos& displacement)
     {
         switch(mirror_type)
         {
@@ -66,10 +66,6 @@ namespace FEITENG
                 }
                 break;
         }
-    }
-
-    std::string Mirror::getDescription() const
-    {
         return "Mirror";
     }
 

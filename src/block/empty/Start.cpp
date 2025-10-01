@@ -19,8 +19,9 @@ namespace FEITENG
         return "Start";
     }
 
-    std::string Start::getDescription() const
+    std::string Start::scheduleMove(Player::Heading& heading, Pos& displacement)
     {
+        heading = Player::Heading::NONE;
         return "Start";
     }
 

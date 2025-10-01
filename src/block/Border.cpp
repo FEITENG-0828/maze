@@ -19,14 +19,10 @@ namespace FEITENG
         return "Border";
     }
 
-    void Border::scheduleMove(Player::Heading& heading, Pos& displacement)
+    std::string Border::scheduleMove(Player::Heading& heading, Pos& displacement)
     {
         heading = Player::Heading::NONE;
         displacement.toZero();
-    }
-
-    std::string Border::getDescription() const
-    {
         return "Border";
     }
 
