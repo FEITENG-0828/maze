@@ -4,17 +4,13 @@
 
 namespace FEITENG
 {
-    class Polarizer: public Block
+    class Spring: public Block
     {
     public:
-        enum class PolarizerType
-        {
-            HORIZONTAL, // '-'
-            VERTICAL    // '|'
-        };
+        using Direction = Player::Heading;
 
-        Polarizer(PolarizerType = PolarizerType::HORIZONTAL);
-        ~Polarizer() = default;
+        Spring(Direction = Direction::UP, int = 0);
+        virtual ~Spring() = default;
 
         virtual std::string getName() const override;
         virtual std::string scheduleMove(Player::Heading&, Pos&) override;
@@ -23,10 +19,11 @@ namespace FEITENG
         virtual void save(std::ostream&) const override;
 
     protected:
-        PolarizerType polarizer_type;
+        Direction direction;
+        int distance;
 
     private:
-        static constexpr std::uint8_t ID = 0x50;
+        static constexpr std::uint8_t ID = 0x70;
         static bool REGISTERED;
     };
 } // namespace FEITENG

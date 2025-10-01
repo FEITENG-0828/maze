@@ -15,6 +15,8 @@ target("maze")
     set_installdir("bin")
 
 target("map_gen")
+    add_includedirs("inc", "inc/block", "inc/block/empty")
+    add_files("src/**.cpp|main.cpp")
     add_files("map_gen/**.cpp")
 
     set_rundir("map_gen")

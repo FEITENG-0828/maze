@@ -4,13 +4,6 @@
 #include <sstream>
 #include <map>
 
-#include "Border.h"
-#include "Empty.h"
-#include "Start.h"
-#include "End.h"
-#include "Wall.h"
-#include "Mirror.h"
-
 namespace FEITENG
 {
     std::unordered_map<std::uint8_t, MapParser::BlockFactory> MapParser::BLOCK_FACTORY_MAP = {};
@@ -125,7 +118,8 @@ namespace FEITENG
         {
             oss << type << ": " << count << '\n';
         }
-        std::string statistics = oss.str() + "Minimum Path: " + std::to_string(min_path) + '\n';
+        std::string statistics = oss.str() + '\n';
+        statistics += "Minimum Path: " + std::to_string(min_path) + "\n\n";
 
         return Board(width, height, std::move(name), std::move(statistics), std::move(grid));
     }

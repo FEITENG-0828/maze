@@ -4,17 +4,11 @@
 
 namespace FEITENG
 {
-    class Polarizer: public Block
+    class Teleport: public Block
     {
     public:
-        enum class PolarizerType
-        {
-            HORIZONTAL, // '-'
-            VERTICAL    // '|'
-        };
-
-        Polarizer(PolarizerType = PolarizerType::HORIZONTAL);
-        ~Polarizer() = default;
+        Teleport(Pos = { 0, 0 });
+        virtual ~Teleport() = default;
 
         virtual std::string getName() const override;
         virtual std::string scheduleMove(Player::Heading&, Pos&) override;
@@ -23,10 +17,10 @@ namespace FEITENG
         virtual void save(std::ostream&) const override;
 
     protected:
-        PolarizerType polarizer_type;
+        Pos relative_pos;
 
     private:
-        static constexpr std::uint8_t ID = 0x50;
+        static constexpr std::uint8_t ID = 0x60;
         static bool REGISTERED;
     };
 } // namespace FEITENG

@@ -13,7 +13,7 @@ namespace FEITENG
     {
         std::ostringstream oss;
         oss << "Board Name: " << board.getName() << '\n';
-        oss << "Dimensions: " << board.getWidth() - 2 << " * " << board.getHeight() - 2 << '\n';
+        oss << "Size: " << board.getWidth() - 2 << " * " << board.getHeight() - 2 << "\n\n";
         oss << board.getStatistics();
         return oss.str();
     }

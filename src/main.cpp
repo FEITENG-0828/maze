@@ -6,12 +6,13 @@ int main(int argc, char** argv)
 {
     std::system("chcp 65001 > nul");
 
-    std::cout << "Hello, Maze!\n" << std::endl;
+    std::cout << "Hello, Maze!\n\n";
 
-    FEITENG::Game game("map_gen/test.maze");
-    std::cout << game.getBoardInfo() << std::endl;
+    FEITENG::Game game("map_gen/map.maze");
+    std::cout << "<<<<<<<<<<<<<<<<<<<<\n";
+    std::cout << game.getBoardInfo();
 
-    std::cout << "<<<<<<<<<<<<<<<<<<<<" << std::endl;
+    std::cout << "<<<<<<<<<<<<<<<<<<<<\n";
     while(1)
     {
         std::cout << "Your Move: (u/d/l/r)" << std::endl;
@@ -36,7 +37,7 @@ int main(int argc, char** argv)
                 hint = game.move(FEITENG::Player::Heading::RIGHT);
                 break;
             default:
-                std::cout << "Invalid Move!" << std::endl;
+                std::cout << "Invalid Move!";
                 break;
         }
         std::cout << hint << '\n' << std::endl;
