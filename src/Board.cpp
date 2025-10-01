@@ -1,13 +1,5 @@
 #include "Board.h"
 
-#include "Border.h"
-#include "Start.h"
-#include "End.h"
-#include "Empty.h"
-#include "Mirror.h"
-#include "Wall.h"
-#include "Player.h"
-
 namespace FEITENG
 {
     Board::Board(int w, int h, std::string&& n, std::string&& s, Grid&& g):

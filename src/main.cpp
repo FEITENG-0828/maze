@@ -1,7 +1,6 @@
 #include <iostream>
 
 #include "Game.h"
-#include "Pos.h"
 
 int main(int argc, char** argv)
 {

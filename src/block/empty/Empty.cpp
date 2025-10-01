@@ -1,7 +1,14 @@
 #include "Empty.h"
 
+#include <istream>
+#include <ostream>
+
+#include "MapParser.h"
+
 namespace FEITENG
 {
+    bool Empty::REGISTERED = MapParser::registerBlock<Empty>(Empty::ID);
+
     Empty::Empty()
     {
         block_type = BlockType::EMPTY;
@@ -21,5 +28,13 @@ namespace FEITENG
     std::string Empty::getDescription() const
     {
         return "Empty";
+    }
+
+    void Empty::load(std::istream&)
+    { }
+
+    void Empty::save(std::ostream& os) const
+    {
+        os.write(reinterpret_cast<const char*>(&ID), sizeof(ID));
     }
 } // namespace FEITENG

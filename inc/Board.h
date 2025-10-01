@@ -7,11 +7,11 @@
 
 namespace FEITENG
 {
-    using Grid = std::vector<std::vector<std::unique_ptr<Block>>>;
-
     class Board
     {
     public:
+        using Grid = std::vector<std::vector<std::unique_ptr<Block>>>;
+
         Board(int, int, std::string&&, std::string&&, Grid&&);
         Board(const Board&) = delete;
         Board(Board&&) = default;

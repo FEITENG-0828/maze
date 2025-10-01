@@ -16,8 +16,8 @@ void writeMapToFile(const std::string& file_name)
     std::vector<std::vector<std::uint8_t>> grid = {
         { 0x10, 0x10, 0x10, 0x10, 0x10, 0x10 },
         { 0x10, 0x20, 0x20, 0x20, 0x22, 0x10 },
-        { 0x10, 0x30, 0x20, 0x20, 0x30, 0x10 },
-        { 0x10, 0x40, 0x20, 0x20, 0x41, 0x10 },
+        { 0x10, 0x30, 0x30, 0x20, 0x30, 0x10 },
+        { 0x10, 0x40, 0x00, 0x20, 0x20, 0x40, 0x01, 0x10 },
         { 0x10, 0x21, 0x20, 0x20, 0x20, 0x10 },
         { 0x10, 0x10, 0x10, 0x10, 0x10, 0x10 }
     };
@@ -30,11 +30,10 @@ void writeMapToFile(const std::string& file_name)
     file.write(reinterpret_cast<const char*>(&name_length), sizeof(size_t));
     file.write(name.c_str(), name_length);
 
-    for(int i = width + 1; i >= 0; --i)
+    for(int i = height + 1; i >= 0; --i)
     {
-        for(int j = 0; j < height + 2; ++j)
+        for(auto byte: grid[i])
         {
-            std::uint8_t byte = grid[i][j];
             file.write(reinterpret_cast<const char*>(&byte), 1);
         }
     }

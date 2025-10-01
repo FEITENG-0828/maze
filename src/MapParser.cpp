@@ -6,22 +6,14 @@
 
 #include "Border.h"
 #include "Empty.h"
-#include "End.h"
-#include "Mirror.h"
 #include "Start.h"
+#include "End.h"
 #include "Wall.h"
+#include "Mirror.h"
 
 namespace FEITENG
 {
-    const std::unordered_map<std::uint8_t, BlockFactory> MapParser::block_factory_map = {
-        { 0x10, []() { return std::make_unique<Border>(); } },
-        { 0x20, []() { return std::make_unique<Empty>(); } },
-        { 0x21, []() { return std::make_unique<Start>(); } },
-        { 0x22, []() { return std::make_unique<End>(); } },
-        { 0x30, []() { return std::make_unique<Wall>(); } },
-        { 0x40, []() { return std::make_unique<Mirror>(Mirror::MirrorType::LEFT); } },
-        { 0x41, []() { return std::make_unique<Mirror>(Mirror::MirrorType::RIGHT); } }
-    };
+    std::unordered_map<std::uint8_t, MapParser::BlockFactory> MapParser::BLOCK_FACTORY_MAP = {};
 
     std::string MapParser::blockTypeToString(Block::BlockType type)
     {
@@ -80,7 +72,7 @@ namespace FEITENG
         }
 
         int rows = width + 2, columns = height + 2;
-        Grid grid;
+        Board::Grid grid;
         std::map<std::string, int> block_type_cnt;
 
         grid.resize(rows);
@@ -101,10 +93,10 @@ namespace FEITENG
                         + std::to_string(i) + "," + std::to_string(j) + ")");
                 }
 
-                auto it = block_factory_map.find(byte);
-                if(it != block_factory_map.end())
+                auto it = BLOCK_FACTORY_MAP.find(byte);
+                if(it != BLOCK_FACTORY_MAP.end())
                 {
-                    grid[i][j] = it->second();
+                    grid[i][j] = it->second(file);
                 }
                 else
                 {
@@ -133,7 +125,7 @@ namespace FEITENG
         {
             oss << type << ": " << count << '\n';
         }
-        std::string statistics = oss.str() + "Min Path: " + std::to_string(min_path) + '\n';
+        std::string statistics = oss.str() + "Minimum Path: " + std::to_string(min_path) + '\n';
 
         return Board(width, height, std::move(name), std::move(statistics), std::move(grid));
     }

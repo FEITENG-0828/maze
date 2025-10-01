@@ -25,10 +25,16 @@ namespace FEITENG
         Block(): block_type(BlockType::NONE) {};
         virtual ~Block() = default;
 
-        BlockType getBlockType() const { return block_type; }
         virtual std::string getName() const = 0;
         virtual void scheduleMove(Player::Heading&, Pos&) = 0;
         virtual std::string getDescription() const = 0;
+
+        BlockType getBlockType() const
+        {
+            return block_type;
+        }
+        virtual void load(std::istream&) = 0;
+        virtual void save(std::ostream& os) const = 0;
 
     protected:
         BlockType block_type;
