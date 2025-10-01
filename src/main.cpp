@@ -8,7 +8,7 @@ int main(int argc, char** argv)
 
     std::cout << "Hello, Maze!\n\n";
 
-    FEITENG::Game game("map_gen/map.maze");
+    FEITENG::Game game("map.maze");
     std::cout << "<<<<<<<<<<<<<<<<<<<<\n";
     std::cout << game.getBoardInfo();
 

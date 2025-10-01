@@ -1,5 +1,5 @@
 .xmake/
-.vscode/
+.vscode*/
 build/
 bin/
 

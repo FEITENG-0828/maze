@@ -29,11 +29,11 @@ namespace FEITENG
                 {
                     case Player::Heading::UP:
                         displacement += { 1, 0 };
-                        hint = "Pass";
+                        // hint = "Pass";
                         break;
                     case Player::Heading::DOWN:
                         displacement += { -1, 0 };
-                        hint = "Pass";
+                        // hint = "Pass";
                         break;
                     case Player::Heading::LEFT:
                     case Player::Heading::RIGHT:
@@ -54,11 +54,11 @@ namespace FEITENG
                         break;
                     case Player::Heading::LEFT:
                         displacement += { 0, -1 };
-                        hint = "Pass";
+                        // hint = "Pass";
                         break;
                     case Player::Heading::RIGHT:
                         displacement += { 0, 1 };
-                        hint = "Pass";
+                        // hint = "Pass";
                         break;
                 }
                 break;

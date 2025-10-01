@@ -11,7 +11,7 @@ target("maze")
 
     set_version("0.0.0")
 
-    set_rundir("$(projectdir)")
+    set_rundir("maps")
     set_installdir("bin")
 
 target("map_gen")
@@ -19,4 +19,4 @@ target("map_gen")
     add_files("src/**.cpp|main.cpp")
     add_files("map_gen/**.cpp")
 
-    set_rundir("map_gen")
+    set_rundir("maps")

@@ -66,7 +66,8 @@ namespace FEITENG
                 }
                 break;
         }
-        return "Mirror";
+        // return "Mirror";
+        return "";
     }
 
     void Mirror::load(std::istream& is)
