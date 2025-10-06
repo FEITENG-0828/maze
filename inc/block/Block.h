@@ -33,7 +33,7 @@ namespace FEITENG
             return block_type;
         }
         virtual void load(std::istream&) = 0;
-        virtual void save(std::ostream& os) const = 0;
+        virtual void save(std::ostream&) const = 0;
 
     protected:
         BlockType block_type;

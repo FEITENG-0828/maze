@@ -9,7 +9,7 @@ target("maze")
     add_includedirs("inc", "inc/block", "inc/block/empty")
     add_files("src/**.cpp")
 
-    set_version("0.0.0")
+    set_version("0.0.1")
 
     set_rundir("maps")
     set_installdir("bin")
